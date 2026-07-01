@@ -1,0 +1,10 @@
+services:
+  animal-picture-app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist the SQLite DB and downloaded images outside the container,
+      # so data survives rebuilds. No external DB server required.
+      - ./data:/code/app/data
+      - ./images:/code/app/images
