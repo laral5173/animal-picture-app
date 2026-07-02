@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 app/data/
 app/images/
+images/
 *.db
 .env
 venv/
