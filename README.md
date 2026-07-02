@@ -87,9 +87,18 @@ FastAPI auto-generates interactive docs at **http://localhost:8000/docs**
 
 ## Running the tests (bonus)
 
+### Without Docker
+
 ```bash
 pip install -r requirements.txt
 pytest tests/ -v
+```
+
+### With Docker
+
+```bash
+docker-compose up --build -d
+docker exec -it animal-picture-app-animal-picture-app-1 pytest tests/ -v
 ```
 
 7 automated tests cover both endpoints: successful fetch (single and
@@ -97,6 +106,12 @@ multiple images), invalid animal type handling, input validation,
 404 handling when no pictures exist yet, and retrieval of the most
 recent record. External API calls are mocked so tests run instantly
 and don't depend on network access.
+
+## User guide
+
+A non-technical guide for end users is available in [`USER_GUIDE.md`](USER_GUIDE.md).
+It explains how to use the app from a browser, what to expect, and includes
+optional command-line examples.
 
 ## Design decisions
 
