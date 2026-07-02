@@ -126,7 +126,8 @@ Invoke-RestMethod -Uri http://localhost:8000/animals/fetch -Method POST -Body '{
 Invoke-RestMethod -Uri http://localhost:8000/animals/cat/latest
 
 :: Download the actual cat image to your computer
-Invoke-RestMethod -Uri http://localhost:8000/animals/cat/latest/image -OutFile "$env:USERPROFILE\Desktop\my_cat.jpg"
+$desktop = [Environment]::GetFolderPath("Desktop")
+Invoke-RestMethod -Uri http://localhost:8000/animals/cat/latest/image -OutFile "$desktop\my_cat.jpg"
 ```
 
 ### Using curl (if you have it installed)
