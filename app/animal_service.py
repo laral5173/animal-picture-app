@@ -5,7 +5,6 @@ and saving them to disk.
 import httpx
 import os
 import uuid
-from datetime import datetime
 
 # External APIs used to fetch random animal pictures.
 # Each returns an image directly (not JSON), so we just download the bytes.

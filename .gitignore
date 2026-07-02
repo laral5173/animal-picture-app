@@ -6,3 +6,6 @@ app/images/
 *.db
 .env
 venv/
+ANIMAL_SERVICE_EXPLANATION.md
+CHALLENGE_EVALUATION.md
+TEST_PLAN.md

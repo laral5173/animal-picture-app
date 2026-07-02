@@ -112,6 +112,12 @@ and don't depend on network access.
 - **Sequential fetching for multiple images**: kept simple and
   readable for this exercise; could be parallelized with
   `asyncio.gather` if throughput became a concern at larger scale.
+- **cataas.com instead of placekitten.com for cats**: the challenge
+  originally suggested `https://placekitten.com/` for cat pictures,
+  but at the time of development that API was not responding reliably.
+  Per the challenge instructions ("feel free to pick an alternative"),
+  `https://cataas.com/cat` was chosen as a drop-in replacement that
+  returns random cat images in the same way.
 
 ## What I'd add with more time
 

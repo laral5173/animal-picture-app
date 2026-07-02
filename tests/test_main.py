@@ -7,14 +7,12 @@ on placekitten.com / place.dog / placebear.com being reachable.
 """
 import os
 import sys
+import time
 import pytest
 from unittest.mock import patch, AsyncMock
 from fastapi.testclient import TestClient
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Use a separate, disposable test database
-os.environ["TESTING"] = "1"
 
 from app.main import app
 from app.database import init_db, SessionLocal, AnimalPicture, engine, Base
@@ -92,6 +90,13 @@ class TestLatestEndpoint:
     def test_get_latest_returns_most_recent_record(self, client):
         db = SessionLocal()
         db.add(AnimalPicture(animal_type="bear", source_url="url1", file_path="path1.jpg"))
+        db.commit()
+        db.close()
+
+        # Small delay so the second record has a distinct created_at timestamp
+        time.sleep(0.01)
+
+        db = SessionLocal()
         db.add(AnimalPicture(animal_type="bear", source_url="url2", file_path="path2.jpg"))
         db.commit()
         db.close()
