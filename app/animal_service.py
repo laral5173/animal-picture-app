@@ -35,8 +35,8 @@ async def fetch_animal_image(animal_type: str) -> tuple[str, str]:
             f"'{animal_type}' is not supported. Choose from: {list(ANIMAL_APIS.keys())}"
         )
 
-    # Width/height are randomized slightly so repeated calls don't always
-    # hit an identical cached image.
+    # Fixed size for all images. Some APIs (place.dog, placebear) accept
+    # width/height in the URL; cataas.com ignores them and returns its own.
     width, height = 300, 300
     url = ANIMAL_APIS[animal_type].format(width=width, height=height)
 

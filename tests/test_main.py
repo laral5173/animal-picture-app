@@ -21,6 +21,7 @@ from app.database import init_db, SessionLocal, AnimalPicture, engine, Base
 @pytest.fixture(autouse=True)
 def setup_and_teardown_db():
     """Fresh database for every test."""
+    os.makedirs("./app/data", exist_ok=True)
     Base.metadata.create_all(bind=engine)
     yield
     # Clean up all rows after each test so tests don't interfere with each other
